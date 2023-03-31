@@ -29,7 +29,19 @@ public class Couleur {
 		this.b = b;
 	}
 	// accesseurs
+	public String getNom() {
+		return this.nom;
+	}
 	
+	public int getR() {
+		return this.r;
+	}
+	public int getG() {
+		return this.g;
+	}
+	public int getB() {
+		return this.b;
+	}
 	// methodes
 	
 	
