@@ -31,7 +31,9 @@ public class ModelGestionnaire implements Serializable {
 		this.couleurs = new ArrayList<>();
 		// on initialise sur la premiere couleur de la collection
 		this.indiceCouleurCourante = 0; 
+		// on sauvegarde le nom du fichier
 		this.nomFichierSauvegarde = nomFichierSauvegarde;
+		// on initialise le changement de couleur a l'indice courant
 		//this.changementCouleur = new SimpleObjectProperty<>(couleurs.get(indiceCouleurCourante));
 		
 		
@@ -52,17 +54,8 @@ public class ModelGestionnaire implements Serializable {
         return this.couleurs;
     }
 
-    public void setCouleurs(List<Couleur> couleurs) {
-        this.couleurs = couleurs;
-    }
-
     public int getIndiceCouleurCourante() {
         return this.indiceCouleurCourante;
-    }
-
-    public void setIndiceCouleurCourante(int indiceCouleurCourante) {
-        this.indiceCouleurCourante = indiceCouleurCourante;
-        //changementCouleur.set(couleurs.get(indiceCouleurCourante));
     }
 
     public String getNomFichierSauvegarde() {
@@ -71,6 +64,14 @@ public class ModelGestionnaire implements Serializable {
 
     public SimpleObjectProperty<Color> getchangementCouleur() {
         return this.changementCouleur;
+    }
+    
+    public void setCouleurs(List<Couleur> couleurs) {
+        this.couleurs = couleurs;
+    }
+    public void setIndiceCouleurCourante(int indiceCouleurCourante) {
+        this.indiceCouleurCourante = indiceCouleurCourante;
+        //changementCouleur.set(couleurs.get(indiceCouleurCourante));
     }
 
 	// methodes
