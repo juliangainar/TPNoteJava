@@ -3,7 +3,6 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
@@ -21,23 +20,28 @@ public class ModelGestionnaire implements Serializable {
 	private int indiceCouleurCourante;
 	private String nomFichierSauvegarde;
 	private SimpleObjectProperty<Color> changementCouleur;
-    private SimpleStringProperty labelIndice;
+    
 	// constructeurs
+    /**
+     * Constructeur de la classe ModelGestionnaire avec 1 parametre
+     * @author Iulian GAINAR
+     * @param nomFichierSauvegarde
+     */
 	public ModelGestionnaire(String nomFichierSauvegarde) {
 		this.couleurs = new ArrayList<>();
 		// on initialise sur la premiere couleur de la collection
 		this.indiceCouleurCourante = 0; 
 		this.nomFichierSauvegarde = nomFichierSauvegarde;
-		this.changementCouleur = new SimpleObjectProperty<>(couleurs.get(indiceCouleurCourante));
+		//this.changementCouleur = new SimpleObjectProperty<>(couleurs.get(indiceCouleurCourante));
 		
 		
 		// chargement du fichier de sauvegarde
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nomFichierSauvegarde))) {
 			// on charge les donnees depuis le fichier
-            ModelGestionnaire model = (ModelGestionnaire) ois.readObject();
-            couleurs = model.getCouleurs();
-            indiceCouleurCourante = model.getIndiceCouleurCourante();
-            this.changementCouleur.set(couleurs.get(indiceCouleurCourante));
+            ModelGestionnaire model = (ModelGestionnaire) ois.readObject(); // on lit l'objet
+            couleurs = model.getCouleurs(); // on sauvegarde la liste de ses couleurs dans le model
+            this.indiceCouleurCourante = model.getIndiceCouleurCourante(); // on modifie l'indice de la couleur courante a celle de l'objet
+            //this.changementCouleur.set(couleurs.get(indiceCouleurCourante));
         } catch (IOException | ClassNotFoundException e) {
         	// sinon on lance une exception
             e.printStackTrace();
@@ -69,8 +73,5 @@ public class ModelGestionnaire implements Serializable {
         return this.changementCouleur;
     }
 
-    public SimpleStringProperty getlabelIndice() {
-        return this.labelIndice;
-    }
 	// methodes
 }
