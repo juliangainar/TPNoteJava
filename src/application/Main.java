@@ -25,7 +25,7 @@ public class Main extends Application {
 			// ajout du titre/
 			primaryStage.setTitle("Gestionnaire de couleurs");
 			// ajout de l'icone de 3iL
-			primaryStage.getIcons().add(new Image("/resources/logo_3il.png"));
+			//primaryStage.getIcons().add(new Image("/application/logo_3il.jpg")); 
 			// desactiver la taille modifiable
 			primaryStage.setResizable(false);
 			// modification de la couleur de fond
